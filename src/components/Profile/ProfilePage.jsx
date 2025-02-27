@@ -8,6 +8,18 @@ const ProfilePage = () => (
       initialValues={{fname:"",lname:"",email:"", password:"",conformPassword:"",phoneNum:""}}
       validate={values => {
         const errors = {};
+ 
+        // checl first name
+        if(!values.fname || values.fname.trim() === ""){
+            errors.fname = "Required"
+        }else if(values.fname.length <= 2){
+            errors.fname = "First name must be at least 4 characters"
+        }
+
+        // check last name
+        if(!values.lname || values.fname.trim() === ""){
+            errors.fname = "Required"
+        }
 
 
         // check email
@@ -61,6 +73,22 @@ const ProfilePage = () => (
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>
+
+          <input 
+            type="text" 
+            name="fname"
+            onChange={handleChange} 
+            onBlur={handleBlur}
+            value={values.fname}
+        />
+        <p>{errors.fname && touched.fname && errors.fname}</p>
+        <input
+            type="text"
+            name="lname"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.lname}/>
+        <p>{errors.lname && touched.lname && errors.lname}</p>
           <input
             type="email"
             name="email"
@@ -68,7 +96,9 @@ const ProfilePage = () => (
             onBlur={handleBlur}
             value={values.email}
           />
-          {errors.email && touched.email && errors.email}
+          <p>{errors.email && touched.email && errors.email}</p>
+          <br/>
+          <input type="text" />
           <input
             type="password"
             name="password"
