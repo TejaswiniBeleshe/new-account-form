@@ -1,11 +1,31 @@
 import { useEffect } from "react";
 
-const ShowData = ({allData,setAllData,setStep})=>{
+const ShowData = ({allData,setAllData,setStep,setTemp,setBusinessInfoData,setProfileData})=>{
 
     const handleClear = ()=>{
         localStorage.removeItem('profile-info')
         setAllData({})  
         setStep(1)
+        setTemp('')
+        setBusinessInfoData({
+            brandName: "",
+            brandType: "",
+            streetAddress: "",
+            city: "",
+            zipCode: "",
+            taxId: "",
+            agreementFile: null,
+            waiverFile: null,
+            coiFile: null,
+    })
+        setProfileData({
+            fname: "",
+            lname: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+            phoneNum: "",
+          })
 
     }
    

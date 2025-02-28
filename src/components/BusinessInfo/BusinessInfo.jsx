@@ -9,7 +9,7 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBusinessInf
       initialValues={businessInfoData}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-        console.log(values,values.waiverFile.name);
+        // console.log(values,values.waiverFile.name);
         setBusinessInfoData(values);
           
           nextStep();

@@ -35,7 +35,7 @@ const WrapperParent = () => {
  const [allData,setAllData] = useState({})
  useEffect(()=>{
   let data = JSON.parse(localStorage.getItem("profile-info"))
-  console.log(data)
+  // console.log(data)
   if(data && data.fname){
     setAllData(data)
     setStep(3)
@@ -70,7 +70,7 @@ const WrapperParent = () => {
         <ProgressNav step={step} />
         {step === 1 && <ProfilePage nextStep={nextStep} profileData={profileData} setProfileData={setProfileData}/>}
         {step === 2 && <BusinessInfoPage prevStep={prevStep} nextStep={nextStep} step={step} businessInfoData={businessInfoData} setBusinessInfoData={setBusinessInfoData}/>}
-        {step === 3 && <ShowData allData={allData} setAllData={setAllData} setStep={setStep}/>}
+        {step === 3 && <ShowData allData={allData} setAllData={setAllData} setStep={setStep} setTemp={setTemp} setBusinessInfoData={setBusinessInfoData} setProfileData={setProfileData}/>}
         <div className="d-flex justify-content-between mt-4">
         </div>
            <div className="d-flex justify-content-between mt-4">
