@@ -8,7 +8,7 @@ const ProgressNav = ({ step }) => {
         {[
           { label: "Your Profile", stepNum: 1 },
           { label: "Business Information", stepNum: 2 },
-          { label: "Additional Users", stepNum: 3 },
+          { label: "Show Data", stepNum: 3 },
         ].map(({ label, stepNum }) => (
           <div key={stepNum} className="text-center w-25">
             <div

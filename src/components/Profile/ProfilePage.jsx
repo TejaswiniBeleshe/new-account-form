@@ -8,9 +8,10 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-50">
       <Card className="p-4 w-100" style={{ border: "none"}}>
+      <h3 className="text-center" style={{color:"#a6a4a2"}}>Step 1</h3>
         <h3 className="text-center mb-4">Your Profile</h3>
         <p className="text-center">
-          Enter login infomation for your account. You will be able <br/>to create additional user after registering.
+          Enter the login infomation for your account. You will be able <br/>to create additional user after registering.
 
         </p>
         <Formik
@@ -66,7 +67,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                     <Form.Control
                       type="text"
                       name="fname"
-                      placeholder="Enter Your First Name"
+                      placeholder="Input Your First Name"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.fname}
@@ -81,7 +82,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                     <Form.Control
                       type="text"
                       name="lname"
-                      placeholder="Enter Your Last Name"
+                      placeholder="Input Your Last Name"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.lname}
@@ -113,7 +114,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                     <Form.Control
                       type="text"
                       name="phoneNum"
-                      placeholder="Enter Your Phone Number"
+                      placeholder="Input Your Phone Number"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.phoneNum}

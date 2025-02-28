@@ -2,14 +2,16 @@ import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import { Form, Button, Col, Row, InputGroup } from "react-bootstrap";
 
-const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInfoData }) => {
+const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBusinessInfoData}) => {
+  
   return (
     <Formik
       initialValues={businessInfoData}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
-        //   console.log(values);
-          setBuninessInfoData(values);
+        console.log(values,values.waiverFile.name);
+        setBusinessInfoData(values);
+          
           nextStep();
           setSubmitting(false);
         }, 400);
@@ -17,7 +19,8 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInf
     >
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
         <FormikForm className="container mt-4 p-4">
-          <h3 className="text-center mb-4">Step 2: Business Information</h3>
+            <h3 className="text-center" style={{color:"#a6a4a2"}}>Step 2</h3>
+          <h3 className="text-center mb-4">Business Information</h3>
           <p className="text-center text-muted">Please enter information about your company.</p>
 
           <Row className="mb-3">
@@ -39,7 +42,7 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInf
 
             <Col md={6}>
               <Form.Group>
-                <Form.Label>Brand Type</Form.Label>
+                <Form.Label>Brand Type*</Form.Label>
                 <Form.Select
                   name="brandType"
                   value={values.brandType}
@@ -112,7 +115,7 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInf
 
           {/* File Uploads Section */}
           <h5 className="mt-4">Documents Upload</h5>
-          <p className="text-muted">Upload the necessary documents to proceed.</p>
+          <p className="text-muted">Once the following documents are signed, you'll be ready to get started.</p>
 
           {/* Agreement File Upload */}
           <Form.Group className="mb-3">
@@ -120,7 +123,7 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInf
             <InputGroup>
               <input
                 type="file"
-                accept=".pdf,.doc,.docx"
+                accept=".doc,.docx,.pdf"
                 className="form-control"
                 onChange={(event) => setFieldValue("agreementFile", event.currentTarget.files[0])}
               />
@@ -130,11 +133,11 @@ const BusinessInfoForm = ({ prevStep, nextStep, businessInfoData, setBuninessInf
 
           {/* Waiver File Upload */}
           <Form.Group className="mb-3">
-            <Form.Label>Non-adult Beverage Waiver*</Form.Label>
+            
             <InputGroup>
               <input
                 type="file"
-                accept=".pdf,.doc,.docx"
+                accept=".doc,.docx,.pdf"
                 className="form-control"
                 onChange={(event) => setFieldValue("waiverFile", event.currentTarget.files[0])}
               />
