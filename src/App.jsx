@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import './App.css'
-import ProfilePage from './components/Profile/ProfilePage'
-import BusinessInfo from './components/BusinessInfo/BusinessInfo'
+import WrapperParent from './components/WrapperParent/WrapperParent'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
      {/* <ProfilePage/> */}
-     <BusinessInfo/>
+     <WrapperParent/>
     </>
   )
 }

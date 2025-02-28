@@ -7,8 +7,12 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
 
   return (
     <Container className="d-flex justify-content-center align-items-center vh-50">
-      <Card className="shadow-lg p-4 w-100" style={{ borderRadius: "15px", background: "#fff" }}>
+      <Card className="p-4 w-100" style={{ border: "none"}}>
         <h3 className="text-center mb-4">Your Profile</h3>
+        <p className="text-center">
+          Enter login infomation for your account. You will be able <br/>to create additional user after registering.
+
+        </p>
         <Formik
           initialValues={profileData}
           validate={(values) => {
@@ -28,7 +32,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
             }
             if (!values.phoneNum || values.phoneNum.trim() === "") {
               errors.phoneNum = "Phone number Required";
-            } else if (!/^\d{10}$/.test(values.phoneNum)) {
+            } else if (!/^\d{10}$/.test(values.phoneNum) || values.phoneNum.length >10) {
               errors.phoneNum = "Invalid phone number";
             }
             if (!values.password || values.password.trim() === "") {
@@ -46,10 +50,10 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               console.log(values)
-              setProfileData(JSON.stringify(values))
+              setProfileData(values)
               // alert(JSON.stringify(values, null, 2));
               nextStep()
-              setSubmitting(false);
+              // setSubmitting(false);
             }, 400);
           }}
         >
@@ -64,10 +68,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="fname"
                       placeholder="Enter Your First Name"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, fname: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.fname}
                       isInvalid={touched.fname && errors.fname}
                     />
@@ -82,10 +83,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="lname"
                       placeholder="Enter Your Last Name"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, lname: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.lname}
                       isInvalid={touched.lname && errors.lname}
                     />
@@ -102,10 +100,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="email"
                       placeholder="Enter Your Email"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, email: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.email}
                       isInvalid={touched.email && errors.email}
                     />
@@ -120,10 +115,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="phoneNum"
                       placeholder="Enter Your Phone Number"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, phoneNum: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.phoneNum}
                       isInvalid={touched.phoneNum && errors.phoneNum}
                     />
@@ -140,10 +132,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="password"
                       placeholder="Create Password"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, password: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.password}
                       isInvalid={touched.password && errors.password}
                     />
@@ -158,10 +147,7 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                       name="confirmPassword"
                       placeholder="Confirm Your Password"
                       onChange={handleChange}
-                      onBlur={(e) => {
-                        handleBlur(e);
-                        setProfileData((prev) => ({ ...prev, confirmPassword: e.target.value }));
-                      }}
+                      onBlur={handleBlur}
                       value={values.confirmPassword}
                       isInvalid={touched.confirmPassword && errors.confirmPassword}
                     />
@@ -169,9 +155,9 @@ const ProfilePage = ({nextStep,profileData,setProfileData}) => {
                   </Form.Group>
                 </Col>
               </Row>
-              <Button type="submit" className="w-100 mt-4" variant="primary" disabled={isSubmitting}>
-                 Next
-              </Button>
+              <div className="d-flex justify-content-end mt-4">        
+                  <Button type="submit" variant="primary">Next Step</Button>
+               </div>
             </Form>
           )}
         </Formik>
